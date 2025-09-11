@@ -1,30 +1,65 @@
 #include <stdlib.h>
 
-char * ft_strtrim(char const *s)
+static	int	ft_strlen(char *str)
 {
-	char 	*trimmed;
-	int		i;
-	int		k;
+	int	i;
 
-	k = 0;
 	i = 0;
-	while (s[i])
+	while (str[i])
 		i++;
-	trimmed = malloc(((sizeof(char)) * i) + 1);
+	return (i);
+}
+
+static	int	is_sep(char c, char *charset)
+{
+	int	i;
+
 	i = 0;
+	while (charset[i])
+	{
+		if (c == charset[i])
+			return (1);
+		i++;
+	}
+	return (0);
+}
+
+
+char * ft_strtrim(char const *s, char const *set)
+{
+	char	*trimmed;
+	int		start;
+	int		end;
+	int		i;
+
+	i = 0;
+	start = 0;
+	end = ft_strlen((char *)s) - 1;
+	if (s == NULL || set == NULL)
+		return (NULL);
+	while (s[start] && is_sep(s[start], (char *)set))
+		start++;
+	while (end > start && is_sep(s[end], (char *)set))
+		end--;
+	trimmed = (char *)malloc(sizeof(char) * (end - start + 2));
 	if (!trimmed)
-	{
-		trimmed = NULL;
-		return (trimmed);
-	}
-	while (s[i] == ' ' || s[i] == '\n' || s[i] == '\t')
-		i++;
-	while (s[i] && !(s[i] == ' ' || s[i] == '\n' || s[i] == '\t'))
-	{
-		trimmed[k] = s[i];
-		i++;
-		k++;
-	}
-	trimmed[k] = '\0';
+		return (NULL);
+	while (start <= end)
+		trimmed[i++] = s[start++];
+	trimmed[i] = '\0';
 	return (trimmed);
 }
+
+// #include <stdio.h>
+// int main()
+// {
+// 	char *s = "  Hello, World!  ";
+// 	char *set = " H!";
+// 	char *result = ft_strtrim(s, set);
+// 	if (result)
+// 	{
+// 		printf("Trimmed string: '%s'\n", result); // Expected: "Hello, World!"
+// 		free(result);
+// 	}
+// 	return 0;
+// }

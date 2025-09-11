@@ -1,18 +1,26 @@
-static char f(unsigned int i,char c)
-{
-    c = (malloc(sizeof(char)));
-    return (malloc(sizeof(char)));
-}
+#include <stdio.h>
+#include <stdlib.h>
 
 char * ft_strmapi(char const *s, char(*f)(unsigned int, char))
-{
-    int i;
+	{
+	int		len;
+	int		i;
+	char	*result;
 
-    i = 0;
-    while (s[i])
-    {
-        f(i,s);
-        i++;
-    }
-    return (s);
+	len = 0;
+	i = 0;
+	if (!s || !f)
+		return (NULL);
+	while (s[len])
+		len++;
+	result = (char *) malloc(sizeof(char) * (len + 1));	
+	if (!result)
+		return (NULL);
+	while (result[i])
+	{
+		result[i] = f(i,s[i]);
+		i++;
+	}
+	result[i] = '\0';
+	return (result);
 }

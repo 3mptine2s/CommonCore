@@ -59,3 +59,18 @@ void	ft_putnbr_fd(int nb, int fd)
 		i++;
 	}
 }
+
+// int main()
+// {
+// 	ft_putnbr_fd(2147483647, 1);
+// 	ft_putchar('\n', 1);
+// 	ft_putnbr_fd(-2147483648, 1);
+// 	ft_putchar('\n', 1);
+// 	ft_putnbr_fd(0, 1);
+// 	ft_putchar('\n', 1);
+// 	ft_putnbr_fd(12345, 1);
+// 	ft_putchar('\n', 1);
+// 	ft_putnbr_fd(-67890, 1);
+// 	ft_putchar('\n', 1);
+// 	return (0);
+// }

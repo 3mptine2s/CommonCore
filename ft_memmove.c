@@ -1,27 +1,29 @@
 #include <stdlib.h>
-void * memmove(void *to, const void *from, size_t numBytes)
-{
-	char *s;
-	char *d;
-	char *middle;
-	char *begin;
+#include "libft.h"
 
-	d = to;
-	s = from;
-	*middle = (char) *s;
-	begin = middle;
-	while (*middle)
+void	*ft_memmove(void *dst, const void *src, size_t len)
+{
+	size_t					i;
+	unsigned char			*d;
+	const unsigned char		*s;
+	
+	i = len;
+	d = (unsigned char *)dst;
+	s = (const unsigned char *)src;
+	if (dst == src || len == 0)
 	{
-		*middle = *s;
-		middle++;
-		s++;
+		return (dst);
 	}
-	middle = begin;
-	while (numBytes--)
+	if (d > s)
 	{
-		*d = *middle;
-		d++;
-		middle++;
+		while (i > 0)
+		{
+			i--;
+			d[i] = s[i];
+		}
+
 	}
-	return (to);
+	else
+		ft_memcpy(dst, src, len);
+	return	(dst);
 }

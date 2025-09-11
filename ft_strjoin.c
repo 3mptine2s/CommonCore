@@ -1,3 +1,5 @@
+#include <stdlib.h>
+
 static int ft_strlen(char const *str)
 {
 	int i;
@@ -36,3 +38,17 @@ char *ft_strjoin(char const *s1, char const *s2)
 	joined[i] = '\0';
 	return (joined);
 }
+
+// #include <stdio.h>
+// int main()
+// {
+// 	char *s1 = "Helloasfghasfh, ";
+// 	char *s2 = "Woradjajald!";
+// 	char *result = ft_strjoin(s1, s2);
+// 	if (result)
+// 	{
+// 		printf("Joined string: %s\n", result); // Expected: "Hello, World!"
+// 		free(result);
+// 	}
+// 	return 0;
+// }

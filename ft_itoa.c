@@ -1,7 +1,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-static int getlength(int n)
+static	int	getlength(int n)
 {
 	int len = 0;
 	if (n <= 0)
@@ -14,7 +14,7 @@ static int getlength(int n)
 	return len;
 }
 
-static void numiter(char *num, int n, int pos)
+static	void	numiter(char *num, int n, int pos)
 {
 	num[pos] = '\0';
 	pos--;
@@ -56,12 +56,13 @@ char *ft_itoa(int n)
 	return num;
 }
 
-int main()
-{
-	char *num;
+// int main()
+// {
+// 	char *num;
 
-	num = ft_itoa(2147483647);
-	printf("%s\n", num);
-	free(num); // optional but good practice
-	return 0;
-}
+// 	num = ft_itoa(2147483647);
+// 	printf("%s\n", num);
+// 	free(num); // optional but good practice
+// 	return 0;
+// }
+// 	num = ft_itoa(-2147483648);

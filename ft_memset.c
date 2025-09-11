@@ -1,29 +1,16 @@
 #include <stdlib.h>
-#include <stdio.h>
-#include <string.h>
 
-void *memset(void *str, int c, size_t n)
+void	*ft_memset(void *str, int c, size_t n)
 {
-	unsigned char *p;
+	unsigned char	*p;
+	size_t			i;
 
-	p = str;
-	while (n-- && *p)
+	p = (unsigned char *)str;
+	i = 0;
+	while (i < n)
 	{
-		*p = (unsigned char)c;
-		p++;
+		p[i] = (unsigned char)c;
+		i++;
 	}
-	return str;
+	return (str);
 }
-
-// int main () 
-// {
-//    char str[50];
-
-//    strcpy(str, "Welcome to Tutorialspoint");
-//    puts(str);
-
-//    memset(str, '#', 7);
-//    puts(str);
-   
-//    return(0);
-// }

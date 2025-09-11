@@ -1,25 +1,39 @@
 #include <stdlib.h>
 
-char	*strnstr(const char *big,	const char *little, size_t len)
+char	*ft_strnstr(const char *big, const char *little, size_t len)
 {
-	int	c;
-	int	d;
+	size_t	i;
+	size_t	j;
 
-	c = 0;
-	d = 0;
-	if (little[0] == '\0')
-		return (big);
-	while (big[c] != '\0' && len)
+	i = 0;
+	if (*little == '\0')
+		return ((char *)big);
+	while (big[i] != '\0' && i < len)
 	{
-		while (big[c + d] == little[d])
+		j = 0;
+		while (i + j < len && big[i + j] == little[j] && big[i + j] != '\0')
 		{
-			if (little[d + 1] == '\0')
-				return (&big[c]);
-			d++;
+			j++;
 		}
-		d = 0;
-		c++;
-        len--;
+		if (little[j] == '\0')
+			return ((char *)&big[i]);
+		i++;
 	}
-	return (0);
+	return (NULL);
 }
+
+// #include <stdio.h>
+// int main()
+// {
+// 	const char *big = "Hello, this is a simple example.";
+// 	const char *little = "is";
+// 	size_t len = 30;
+
+// 	char *result = ft_strnstr(big, little, len);
+// 	if (result)
+// 		printf("Found: %s\n", result); // Expected: "simple example."
+// 	else
+// 		printf("Not found within the given length.\n");
+
+// 	return 0;
+// }

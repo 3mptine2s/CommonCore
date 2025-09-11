@@ -1,6 +1,6 @@
 #include <stdlib.h>
 
-int	ft_strlen(char *str)
+static	int	ft_strlen(char *str)
 {
 	int	i;
 
@@ -10,7 +10,7 @@ int	ft_strlen(char *str)
 	return (i);
 }
 
-int	is_sep(char c, char *charset)
+static	int	is_sep(char c, char *charset)
 {
 	int	i;
 
@@ -24,7 +24,7 @@ int	is_sep(char c, char *charset)
 	return (0);
 }
 
-char	*dup_strft(char *src, int start, int end)
+static	char	*dup_strft(char *src, int start, int end)
 {
 	char	*res;
 	int		i;
@@ -40,6 +40,15 @@ char	*dup_strft(char *src, int start, int end)
 	return (res);
 }
 
+static	char	**ft_empty_arr(void)
+{
+	char	**arr;
+
+	arr = malloc(sizeof(char *));
+	arr[0] = NULL;
+	return (arr);
+}
+
 char	**ft_split(char *str, char *charset)
 {
 	char	**res;
@@ -51,6 +60,10 @@ char	**ft_split(char *str, char *charset)
 	start = 0;
 	i_tab = 0;
 	res = malloc(sizeof(char *) * (ft_strlen(str) + 1));
+	if (!res)
+		return (NULL);
+	if (ft_strlen(str) == 0)
+		return (ft_empty_arr());
 	while (str[i])
 	{
 		while (str[i] && is_sep(str[i], charset))
@@ -64,3 +77,21 @@ char	**ft_split(char *str, char *charset)
 	res[i_tab] = NULL;
 	return (res);
 }
+
+// #include <stdio.h>
+// int main()
+// {
+// 	char **result;
+// 	int i;
+
+// 	result = ft_split("Hello,,World! This is a test.", ", !.");
+// 	i = 0;
+// 	while (result[i])
+// 	{
+// 		printf("Substring %d: '%s'\n", i, result[i]);
+// 		free(result[i]);
+// 		i++;
+// 	}
+// 	free(result);
+// 	return 0;
+// }

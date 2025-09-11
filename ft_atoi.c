@@ -1,4 +1,3 @@
-#include <stdio.h>
 int	ft_iswhitespace(char c)
 {
 	if (c == ' ' || c == '\t' || c == '\n' || c == '\v'
@@ -32,10 +31,10 @@ int	ft_atoi(char *str)
 	return (result * sign);
 }
 
-
+// #include <stdio.h>
 // int main()
 // {
-// 	char *str = "-2147483647";
+// 	char *str = "2147483648";
 // 	printf("%d\n", ft_atoi(str));
 // 	return (0);
 // }
