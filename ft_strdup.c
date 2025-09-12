@@ -6,7 +6,7 @@
 /*   By: sthubthi <sthubthi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/12 11:05:50 by sthubthi          #+#    #+#             */
-/*   Updated: 2025/09/12 11:52:29 by sthubthi         ###   ########.fr       */
+/*   Updated: 2025/09/12 15:46:39 by sthubthi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,6 @@ char	*ft_strdup(const char *s)
 		dup[i] = s[i];
 		i++;
 	}
+	dup[i] = '\0';
 	return ((char *)dup);
 }
