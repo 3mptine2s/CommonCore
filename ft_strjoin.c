@@ -1,8 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sthubthi <sthubthi@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/09/12 11:05:52 by sthubthi          #+#    #+#             */
+/*   Updated: 2025/09/12 11:53:46 by sthubthi         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <stdlib.h>
 
-static int ft_strlen(char const *str)
+static int	ft_strlen(char const *str)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (str[i])
@@ -10,12 +22,12 @@ static int ft_strlen(char const *str)
 	return (i);
 }
 
-char *ft_strjoin(char const *s1, char const *s2)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	int     i;
-	int     len;
-	int     len2;
-	char    *joined;
+	int		i;
+	int		len;
+	int		len2;
+	char	*joined;
 
 	i = 0;
 	len = ft_strlen(s1);

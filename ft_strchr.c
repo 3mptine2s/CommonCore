@@ -1,8 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sthubthi <sthubthi@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/09/12 11:05:49 by sthubthi          #+#    #+#             */
+/*   Updated: 2025/09/12 11:52:07 by sthubthi         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <stdlib.h>
 
-char *ft_strchr(const char *str, int search_str)
+char	*ft_strchr(const char *str, int search_str)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (str[i] != '\0')
@@ -16,7 +28,7 @@ char *ft_strchr(const char *str, int search_str)
 	if (search_str == '\0')
 	{
 		return ((char *)&str[i]);
-	}	
+	}
 	return (NULL);
 }
 

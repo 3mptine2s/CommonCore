@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sthubthi <sthubthi@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/09/12 11:05:53 by sthubthi          #+#    #+#             */
+/*   Updated: 2025/09/12 11:53:54 by sthubthi         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 unsigned int	ft_strlcat(char *dest, char *src, unsigned int size)
 {
 	unsigned int	dlen;
@@ -21,17 +33,3 @@ unsigned int	ft_strlcat(char *dest, char *src, unsigned int size)
 	dest[dlen + i] = '\0';
 	return (dlen + slen);
 }
-
-// #include <stdio.h>
-// int main()
-// {
-// 	char dest[20] = "Hello, ";
-// 	char src[] = "World!";
-// 	unsigned int size = 15;
-
-// 	unsigned int result = ft_strlcat(dest, src, size);
-// 	printf("Result: %u\n", result); // Expected: 13 (length of "Hello, " + length of "World!")
-// 	printf("Dest after strlcat: %s\n", dest); // Expected: "Hello, World!"
-
-// 	return 0;
-// }

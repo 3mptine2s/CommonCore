@@ -1,10 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sthubthi <sthubthi@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/09/12 11:05:58 by sthubthi          #+#    #+#             */
+/*   Updated: 2025/09/12 12:01:35 by sthubthi         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <stdlib.h>
 
-char *strrchr(const char *str, int search_str)
+char	*strrchr(const char *str, int search_str)
 {
 	char	*cast;
-	char 	*lastocc;
-	int 	i;
+	char	*lastocc;
+	int		i;
 
 	cast = (char *)str;
 	i = 0;
@@ -21,18 +33,3 @@ char *strrchr(const char *str, int search_str)
 		return ((char *)&str[i]);
 	return (lastocc);
 }
-
-// #include <stdio.h>
-// int main()
-// {
-// 	const char *str = "Hello, World!";
-// 	char ch = 'o';
-
-// 	char *result = strrchr(str, ch);
-// 	if (result)
-// 		printf("Last occurrence of '%c' found at position: %d\n", ch, result - str);
-// 	else
-// 		printf("Character '%c' not found in the string.\n", ch);
-
-// 	return 0;
-// }

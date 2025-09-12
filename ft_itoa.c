@@ -1,9 +1,23 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_itoa.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sthubthi <sthubthi@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/09/12 11:05:39 by sthubthi          #+#    #+#             */
+/*   Updated: 2025/09/12 11:49:16 by sthubthi         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <stdlib.h>
 #include <stdio.h>
 
 static	int	getlength(int n)
 {
-	int len = 0;
+	int	len;
+
+	len = 0;
 	if (n <= 0)
 		len = 1;
 	while (n != 0)
@@ -11,7 +25,7 @@ static	int	getlength(int n)
 		n /= 10;
 		len++;
 	}
-	return len;
+	return (len);
 }
 
 static	void	numiter(char *num, int n, int pos)
@@ -26,43 +40,53 @@ static	void	numiter(char *num, int n, int pos)
 	}
 }
 
-char *ft_itoa(int n)
+static void	intmin(char *numarr)
 {
-	int len = getlength(n);
-	char *num;
+	num[0] = '-';
+	num[1] = '2';
+	num[2] = '1';
+	num[3] = '4';
+	num[4] = '7';
+	num[5] = '4';
+	num[6] = '8';
+	num[7] = '3';
+	num[8] = '6';
+	num[9] = '4';
+	num[10] = '8';
+	num[11] = '\0';
+}
 
-	if (n <= -2147483648)
+char	*ft_itoa(int n)
+{
+	int		len;
+	char	*num;
+
+	len = getlength(n);
+	num = malloc(sizeof(char) * (len + 1));
+	if (!num)
+		return (NULL);
+	if (n == -2147483648)
 	{
-		num = "-2147483648";
+		INTMIN(num);
 		return (num);
 	}
 	if (n < 0)
 	{
-		num = malloc(len + 1);
-		if (!num)
-			return NULL;
 		num[0] = '-';
-		numiter(num + 1, -n, len - 1); // write digits after the minus
-		num[len] = '\0';
+		numiter(num + 1, -n, len - 1);
 	}
 	else
-	{
-		num = malloc(len + 1);
-		if (!num)
-			return NULL;
 		numiter(num, n, len);
-		num[len] = '\0';
-	}
-	return num;
+	num[len] = '\0';
+	return (num);
 }
 
-// int main()
+// int	main(void)
 // {
-// 	char *num;
+// 	char	*num;
 
-// 	num = ft_itoa(2147483647);
+// 	num = (char *)ft_itoa(-2147483648);
 // 	printf("%s\n", num);
-// 	free(num); // optional but good practice
-// 	return 0;
+// 	free(num);
+// 	return (0);
 // }
-// 	num = ft_itoa(-2147483648);

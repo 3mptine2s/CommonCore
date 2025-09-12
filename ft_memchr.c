@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_memchr.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sthubthi <sthubthi@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/09/12 11:05:39 by sthubthi          #+#    #+#             */
+/*   Updated: 2025/09/12 11:49:26 by sthubthi         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <stdlib.h>
 
 void	*ft_memchr(const void *ptr, int ch, size_t count)
@@ -17,19 +29,3 @@ void	*ft_memchr(const void *ptr, int ch, size_t count)
 	}
 	return (NULL);
 }
-
-// #include <stdio.h>
-// int main()
-// {
-//     const char str[] = "Hello, World!";
-//     char ch = 'W';
-//     size_t count = 13;
-
-//     char *result = (char *)ft_memchr(str, ch, count);
-//     if (result)
-//         printf("Character '%c' found at position: %d\n", ch, result - str);
-//     else
-//         printf("Character '%c' not found in the first %zu bytes.\n", ch, count);
-
-//     return 0;
-// }
