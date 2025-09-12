@@ -6,7 +6,7 @@
 /*   By: sthubthi <sthubthi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/12 11:05:39 by sthubthi          #+#    #+#             */
-/*   Updated: 2025/09/12 11:49:16 by sthubthi         ###   ########.fr       */
+/*   Updated: 2025/09/12 12:10:07 by sthubthi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,18 +42,18 @@ static	void	numiter(char *num, int n, int pos)
 
 static void	intmin(char *numarr)
 {
-	num[0] = '-';
-	num[1] = '2';
-	num[2] = '1';
-	num[3] = '4';
-	num[4] = '7';
-	num[5] = '4';
-	num[6] = '8';
-	num[7] = '3';
-	num[8] = '6';
-	num[9] = '4';
-	num[10] = '8';
-	num[11] = '\0';
+	numarr[0] = '-';
+	numarr[1] = '2';
+	numarr[2] = '1';
+	numarr[3] = '4';
+	numarr[4] = '7';
+	numarr[5] = '4';
+	numarr[6] = '8';
+	numarr[7] = '3';
+	numarr[8] = '6';
+	numarr[9] = '4';
+	numarr[10] = '8';
+	numarr[11] = '\0';
 }
 
 char	*ft_itoa(int n)
@@ -67,7 +67,7 @@ char	*ft_itoa(int n)
 		return (NULL);
 	if (n == -2147483648)
 	{
-		INTMIN(num);
+		intmin(num);
 		return (num);
 	}
 	if (n < 0)

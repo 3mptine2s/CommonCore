@@ -6,7 +6,7 @@
 /*   By: sthubthi <sthubthi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/12 11:05:49 by sthubthi          #+#    #+#             */
-/*   Updated: 2025/09/12 11:52:07 by sthubthi         ###   ########.fr       */
+/*   Updated: 2025/09/12 12:34:52 by sthubthi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,22 @@
 
 char	*ft_strchr(const char *str, int search_str)
 {
-	int	i;
+	int		i;
+	char	*temp;
 
+	temp = (char *)str;
 	i = 0;
-	while (str[i] != '\0')
+	while (temp[i] != '\0')
 	{
-		if (search_str == str[i])
+		if (temp[i] == (char)search_str)
 		{
-			return ((char *)&str[i]);
+			return (&temp[i]);
 		}
 		i++;
 	}
-	if (search_str == '\0')
+	if (temp[i] == (char)search_str)
 	{
-		return ((char *)&str[i]);
+		return (&temp[i]);
 	}
 	return (NULL);
 }

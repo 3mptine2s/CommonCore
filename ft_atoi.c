@@ -6,38 +6,30 @@
 /*   By: sthubthi <sthubthi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/12 11:05:17 by sthubthi          #+#    #+#             */
-/*   Updated: 2025/09/12 11:06:33 by sthubthi         ###   ########.fr       */
+/*   Updated: 2025/09/12 13:03:09 by sthubthi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_iswhitespace(char c)
+int	ft_atoi(const char *nptr)
 {
-	if (c == ' ' || c == '\t' || c == '\n' || c == '\v'
-		|| c == '\f' || c == '\r')
-		return (1);
-	return (0);
-}
-
-int	ft_atoi(char *str)
-{
-	long int	result;
+	int			result;
 	int			sign;
 	int			i;
 
 	result = 0;
 	sign = 1;
 	i = 0;
-	while (ft_iswhitespace(str[i]))
+	while (nptr[i] == ' ' || (nptr[i] >= 9 && nptr[i] <= 13))
 		i++;
-	while (str[i] == '-' || str[i] == '+')
+	if (nptr[i] == '+' || nptr[i] == '-')
 	{
-		if (str[i] == '-')
+		if (nptr[i] == '-')
 			sign *= -1;
 		i++;
 	}
-	while (str[i] >= '0' && str[i] <= '9')
+	while (nptr[i] >= '0' && nptr[i] <= '9')
 	{
-		result = result * 10 + (str[i] - '0');
+		result = result * 10 + (nptr[i] - '0');
 		i++;
 	}
 	return (result * sign);
@@ -46,7 +38,7 @@ int	ft_atoi(char *str)
 // #include <stdio.h>
 // int main()
 // {
-// 	char *str = "2147483648";
-// 	printf("%d\n", ft_atoi(str));
+// 	char *nptr = "2147483648";
+// 	printf("%d\n", ft_atoi(nptr));
 // 	return (0);
 // }

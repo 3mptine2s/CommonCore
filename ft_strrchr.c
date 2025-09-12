@@ -6,13 +6,13 @@
 /*   By: sthubthi <sthubthi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/12 11:05:58 by sthubthi          #+#    #+#             */
-/*   Updated: 2025/09/12 12:01:35 by sthubthi         ###   ########.fr       */
+/*   Updated: 2025/09/12 12:37:21 by sthubthi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 
-char	*strrchr(const char *str, int search_str)
+char	*ft_strrchr(const char *str, int search_str)
 {
 	char	*cast;
 	char	*lastocc;
@@ -23,13 +23,13 @@ char	*strrchr(const char *str, int search_str)
 	lastocc = NULL;
 	while (str[i])
 	{
-		if (search_str == str[i])
+		if ((char)search_str == str[i])
 		{
 			lastocc = &cast[i];
 		}
 		i++;
 	}
-	if (search_str == '\0')
+	if ((char)search_str == '\0')
 		return ((char *)&str[i]);
 	return (lastocc);
 }

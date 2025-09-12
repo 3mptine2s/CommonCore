@@ -6,7 +6,7 @@
 /*   By: sthubthi <sthubthi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/12 11:06:00 by sthubthi          #+#    #+#             */
-/*   Updated: 2025/09/12 12:02:25 by sthubthi         ###   ########.fr       */
+/*   Updated: 2025/09/12 12:08:43 by sthubthi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 
 	i = 0;
 	pos = start;
+	sub = (char *)malloc(sizeof(char) * (len + 1));
 	if (s[start + len])
 	{
-		sub = (char *)malloc(sizeof(char) * (len + 1));
 		if (!sub)
 			return (NULL);
 		while (pos < start + len)
