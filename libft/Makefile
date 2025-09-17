@@ -16,10 +16,7 @@ SRCS			:=	ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c \
 					ft_strmapi.c ft_striteri.c ft_putchar_fd.c \
 					ft_putstr_fd.c ft_putendl_fd.c ft_putnbr_fd.c \
 
-BONUS 			:=	ft_lstnew.c \
-
 OBJS			:=	$(SRCS:%.c=%.o)
-BONUS_OBJS		:=	$(BONUS:%.c=%.o)
 # INC_DIR		:=	includes/
 
 all				:	$(NAME)
@@ -30,18 +27,12 @@ $(NAME)			:	$(OBJS) Makefile
 $(OBJS)			:	%.o : %.c
 	$(CC) $(CFLAG) $< -o $@
 
-bonus			:	$(BONUS_OBJS) all
-	ar rcs -o $(NAME) $(BONUS_OBJS)
-
-$(BONUS_OBJS)	: %.o : %.c
-	$(CC) $(CFLAG) $< -o $@
-
 clean			:
-	rm -rf $(OBJS) $(BONUS_OBJS)
+	rm -rf $(OBJS)
 
 fclean			:	clean
 	rm -rf $(NAME)
 
 re				:	fclean all
 
-.PHONY			:	all clean fclean re bonus
+.PHONY			:	all clean fclean re
