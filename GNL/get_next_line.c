@@ -1,98 +1,104 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sthubthi <sthubthi@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/11/15 16:05:09 by sthubthi          #+#    #+#             */
+/*   Updated: 2025/11/15 17:24:12 by sthubthi         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <fcntl.h>    // for open()
 #include <unistd.h>   // for read(), close()
 #include <stdlib.h>   // for malloc(), exit()
 #include <stdio.h>    // for perror()
-#include "get_next_line.h" // place everything as per the subject when done , gnlutils , headerfile , etc.
+#include "get_next_line.h"
 
-// ALMOST DONE , CHANGE SOME CODES FOR NORM AND BINARY HANDLING.
-
-static	char	*extract_line(char *src, char targ)
+int	readcheck(int readbytes, char *testbuff, char *stash)
 {
-	int		j;
-	int		i;
-	char	*line;
-
-	i = 0;
-	j = 0;
-	while ((src[i]) && (src[i] != targ))
-		i++;
-	if (src[i] == targ)
-		i++;
-	line = malloc(sizeof(char) * (i + 1));
-	while (j < i)
-	{
-		line[j] = src[j];
-		j++;
-	}
-	line[j] = '\0';
-	return (line);
-}
-
-static	char	*update_stash(char *stash)
-{
-	int		i;
-	int		j;
-	char	*new_stash;
-
-	i = 0;
-	j = 0;
-	while (stash[i] && stash[i] != '\n')
-		i++;
-	if (!stash[i])
+	if (readbytes < 0)
 	{
 		free(stash);
-		return (NULL);
+		free(testbuff);
+		return (0);
 	}
-	i++;
-	new_stash = malloc(ft_strlen(stash + i) + 1);
-	if (!new_stash)
-		return (NULL);
-	while (stash[i])
-	{
-		new_stash[j] = stash[i];
-		j++;
-		i++;
-	}
-	free(stash);
-	new_stash[j] = '\0';
-	return (new_stash);
+	return (1);
 }
 
-char *get_next_line(int fd)
+char	*read_to_nl(int fd, char *stash)
 {
-	static char *stash;
-	char 		testbuff[BUFFER_SIZE + 1];
+	char		*joined;
+	char		*testbuff;
 	ssize_t		readbytes;
-	char		*line;
 
 	readbytes = 1;
+	testbuff = malloc(sizeof(char) * (BUFFER_SIZE + 1));
+	if (!testbuff)
+		return (free(stash), NULL);
+	while ((readbytes > 0) && (!(ft_strchr(stash, '\n'))))
+	{
+		readbytes = read(fd, testbuff, BUFFER_SIZE);
+		if (!(readcheck(readbytes, testbuff, stash)))
+			return (NULL);
+		testbuff[readbytes] = '\0';
+		joined = ft_strjoin_free(stash, testbuff);
+		if (!joined)
+			return (NULL);
+		stash = joined;
+	}
+	free(testbuff);
+	if (stash[0] == '\0')
+		return (free(stash), NULL);
+	return (stash);
+}
+
+int	ft_strlen(char const *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+		i++;
+	return (i);
+}
+
+char	*get_next_line(int fd)
+{
+	static char	*stash;
+	char		*line;
+
+	if (fd < 0 || fd > 999 || BUFFER_SIZE <= 0)
+		return (NULL);
 	if (!stash)
 	{
-		stash = malloc(sizeof(char) * BUFFER_SIZE);
+		stash = (char *)malloc(sizeof(char) * BUFFER_SIZE);
 		if (!stash)
 			return (NULL);
 		stash[0] = '\0';
 	}
-	while ((readbytes > 0) && (!(ft_strchr(stash, '\n'))))
+	stash = read_to_nl(fd, stash);
+	if (stash == NULL)
+		return (NULL);
+	line = extract_line(stash, '\n');
+	if (!line)
 	{
-		readbytes = read(fd,testbuff,BUFFER_SIZE);
-		if (readbytes <= 0 )
-			break;
-		testbuff[readbytes] = '\0';
-		stash = ft_strjoin_free(stash, testbuff);
+		free(stash);
+		stash = NULL;
+		return (NULL);
 	}
-	line = extract_line(stash, '\n');	
 	stash = update_stash(stash);
 	return (line);
 }
 
-int main() // just the basic work right now , we will build off from here.
-{
-	int 	fd = open("test.txt",O_RDONLY);
-	int i = 2;
-	while (i < 6)
-	{
-		printf("%s",get_next_line(fd));
-		i++;
-	}
-}
+// int main()
+// {
+// 	int 	fd = open("test.txt",O_RDONLY);
+// 	int i = 2;
+// 	while (i < 100)
+// 	{
+// 		printf("%s",get_next_line(fd));
+// 		i++;
+// 	}
+// }
